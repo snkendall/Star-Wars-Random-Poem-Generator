@@ -68,7 +68,7 @@ function generatePoem(corpus, numLines, numWords){
     if (i !== n-1){
       poetryLine += thisWord + " ";
     } else {
-      poetryLine += thisWord + "\n";
+      poetryLine += thisWord + " \n";
     }  
   }
     
@@ -76,12 +76,12 @@ function generatePoem(corpus, numLines, numWords){
     var arrStr = str.split(' ');
     for (var i = 0; i < arrStr.length; i++){
       if (arrStr.indexOf(arrStr[i]) !== i){
-        arrStr[i] = wordToPoetryLine(obj);
+        arrStr[i] = goodWords[Math.floor(Math.random() * goodWords.length)];
       }
     }
     //if the last element is in badEndings
-    if (badEndings.indexOf(arrStr[arrStr.length-1]) > -1){
-      arrStr[arrStr.length-1] = goodWords[Math.floor(Math.random() * goodWords.length)];
+    if (badEndings.indexOf(arrStr[arrStr.length-2]) > -1){
+      arrStr[arrStr.length-2] = goodWords[Math.floor(Math.random() * goodWords.length)];
     }
     return arrStr.join(' ');
   } 
@@ -101,6 +101,7 @@ function generatePoem(corpus, numLines, numWords){
   return poem;
 }
 
-//generatePoem(corpus, 5, 2);
+//generatePoem(corpus, 4, 2);
+  
 
-document.getElementById("poem").innerHTML = generatePoem(corpus, 7, 3);
+document.getElementById("poem").innerHTML = generatePoem(corpus, 6, 2);
